@@ -47,7 +47,7 @@ export default function RecentProducts() {
 
 
 
-  let { addProductToCart } = useContext(CartContext);
+  let { addProductToCart,setCart } = useContext(CartContext);
 
   const [loading, setloading] = useState(false)
   const [currentId, setCurrentId] = useState(0)
@@ -59,7 +59,7 @@ export default function RecentProducts() {
     console.log(response);
     if (response.data.status === "success") {
       setloading(false);
-
+      setCart(response.data)
       toast.success(response.data.message, {
         icon: "👏",
         style: {
@@ -141,7 +141,7 @@ export default function RecentProducts() {
   return (
     <div className="row">
       {data.data.data?.map((product) => (
-        <div key={product.id} className="w-1/6 px-4">
+        <div key={product.id} className="w-1/6 px-4 shadow-md hover:shadow-green-500">
           <div className="product py-2">
             <Link to={`/productdetails/${product.id}/${product.category.name}`}>
               <img

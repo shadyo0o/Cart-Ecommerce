@@ -27,6 +27,9 @@ import BrandsDetails from "./components/BrandsDetails/BrandsDetails";
 import CategoriesDetails from "./components/CategoriesDetails/CategoriesDetails";
 import WishList from "./components/WishList/WishList";
 import WishContextProvider from "./Context/WishContext";
+import NotFound from "./components/NotFound/NotFound";
+import Checkout from "./components/Checkout/Checkout";
+import Orders from "./components/orders/orders";
 
 
 
@@ -41,11 +44,11 @@ let x = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <ProtectedRoute>
+        element: 
+<ProtectedRoute>
             <Home />
-          </ProtectedRoute>
-        ),
+            </ProtectedRoute>
+        ,
       },
       {
         path: "product",
@@ -53,6 +56,24 @@ let x = createBrowserRouter([
           <ProtectedRoute>
             
             <Product />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "checkout",
+        element: (
+          <ProtectedRoute>
+            
+            <Checkout />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "allorders",
+        element: (
+          <ProtectedRoute>
+            
+            <Orders />
           </ProtectedRoute>
         ),
       },
@@ -124,6 +145,15 @@ let x = createBrowserRouter([
           <ProtectedRoute>
             
             <Cart />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "*",
+        element: (
+          <ProtectedRoute>
+            
+            <NotFound />
           </ProtectedRoute>
         ),
       },

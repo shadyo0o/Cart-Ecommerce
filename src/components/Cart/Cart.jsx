@@ -3,6 +3,7 @@ import style from "./Cart.module.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import { CartContext } from "../../Context/CartContext";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
   const [cartDetails, setCartDetails] = useState(null);
@@ -24,6 +25,7 @@ const [loading, setLoading] = useState(false)
     let response = await getLoggedUserCart();
     // console.log(response.data.data);
     setCartDetails(response.data.data);
+    
   }
 
   async function getUpdateCartItem(productId,count) {
@@ -174,6 +176,16 @@ const [loading, setLoading] = useState(false)
         loading ? <i className="fas fa-spinner fa-spin"></i>:'Clear All'
         }
       </button>
+
+      <div>
+
+        <Link to={'/checkout'}>
+      <button  className="btn mt-3">
+        CheckOut Now ...
+      </button>
+
+      </Link>
+      </div>
 
 
       </div>
