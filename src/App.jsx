@@ -1,6 +1,6 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import image from "./assets/image/images (1).png";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LayOut from "./components/LayOut/LayOut";

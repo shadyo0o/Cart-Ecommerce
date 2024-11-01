@@ -151,7 +151,7 @@ if (isError) {
 return (
   <div className="row">
     {data.data.data?.map((product) => (
-      <div key={product.id} className="w-1/4 px-4 shadow-lg hover:shadow-green-500">
+      <div key={product.id} className="lg:w-1/6 sm:w-1/2 md:w-1/4 px-4 shadow-lg hover:shadow-green-500">
         <div className="product py-2">
           <Link to={`/productdetails/${product.id}/${product.category.name}`}>
             <img

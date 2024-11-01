@@ -30,7 +30,7 @@ export default function Categories() {
   return (
     <div className="row">
       {categories?.map((cat) => (
-        <div key={cat._id} className="p-2 bg-green-500 w-1/4">
+        <div key={cat._id} className="px-2 shadow-md hover:shadow-green-700 lg:w-1/5 sm:w-1/2 md:w-1/3">
           <Link to={`/categories/${cat.name}`}>
             <img className="w-full h-[300px]" src={cat?.image} alt={cat?.name}/>
 

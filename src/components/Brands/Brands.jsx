@@ -65,7 +65,7 @@ if (isLoading) {
     return <div className="row ">
     {
         
-        data?.data.data.map((brand)=> <div key={brand._id} className="w-1/4 px-3 h-full py-2">
+        data?.data.data.map((brand)=> <div key={brand._id} className="lg:w-1/6 sm:w-1/2 md:w-1/4 px-3 h-full py-2">
             <Link to={`/brands/${brand._id}/${brand.name}`}>
             
             <div className="p-2 bg-green-800 cursor-pointer">
