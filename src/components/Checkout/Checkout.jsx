@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import style from './Checkout.module.css'
 import { useEffect } from "react";
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as yup from 'yup'
 import axios from "axios";
-
+import { CartContext } from "../../Context/CartContext";
+import { useParams } from "react-router-dom";
 
 export default function Checkout() {
+
+let{checkOut}=useContext(CartContext)
+
+let {cartId}=useParams()
+console.log(cartId);
+
 
     const [counter, setCounter] = useState(0)
     useEffect(() => {
@@ -28,22 +35,17 @@ export default function Checkout() {
             phone:'',
             city:'',
         },validationSchema,
-        onSubmit:()=> handleCheckout("6721524b4f0f1ef513da44c4",'http://localhost:5175')
+        onSubmit:()=> handleCheckout(`${cartId}`,'http://localhost:5173')
     })
 
 
     async function handleCheckout(cartId,url){
-        let {data} = await axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${url}`,
-            {
-                shippingAddress:formik.values
-            },
-            {
-                headers:{
-                    token:localStorage.getItem('userToken')
-                }
-            }
-        )
+        
+        let {data}= await checkOut(cartId,url,formik.values)
+
         console.log(data);
+        
+
         if(data.status === "success")
         {
             window.location.href=data.session.url

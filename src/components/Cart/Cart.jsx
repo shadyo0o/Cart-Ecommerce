@@ -6,6 +6,8 @@ import { CartContext } from "../../Context/CartContext";
 import { Link } from "react-router-dom";
 
 export default function Cart() {
+
+  const [currentId, setCurrentId] = useState(null)
   const [cartDetails, setCartDetails] = useState(null);
 const [loading, setLoading] = useState(false)
   let {setCart, getLoggedUserCart,updateCartItem ,deleteCartItem,clearCart} = useContext(CartContext);
@@ -25,6 +27,8 @@ const [loading, setLoading] = useState(false)
     let response = await getLoggedUserCart();
     // console.log(response.data.data);
     setCartDetails(response.data.data);
+    setCurrentId(response.data.data._id);
+    
     
   }
 
@@ -89,8 +93,8 @@ const [loading, setLoading] = useState(false)
           </tr>
         </thead>
         <tbody>
-          {cartDetails?.products.map((product)=> 
-              <tr key={product.product.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+          
+          {cartDetails?.products.map((product) => <tr key={product.product.id}  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <td className="p-4">
               <img
                 src={product.product.imageCover}
@@ -164,9 +168,11 @@ const [loading, setLoading] = useState(false)
                 Remove
               </span>
             </td>
+
           </tr>
-          
-  
+               
+                      
+                      
           )}
         
         </tbody>
@@ -179,7 +185,7 @@ const [loading, setLoading] = useState(false)
 
       <div>
 
-        <Link to={'/checkout'}>
+        <Link to={`/checkout/${currentId}`}>
       <button  className="btn mt-3">
         CheckOut Now ...
       </button>

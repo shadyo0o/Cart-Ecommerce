@@ -60,7 +60,7 @@ let x = createBrowserRouter([
         ),
       },
       {
-        path: "checkout",
+        path: "checkout/:cartId",
         element: (
           <ProtectedRoute>
             

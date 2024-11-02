@@ -73,6 +73,26 @@ const [cart, setCart] = useState(null)
 
 
 
+// -*************************************************** pay ment
+
+function checkOut(cartId,url,formValue){
+    return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${url}`,{
+        shippingAddress: formValue
+        
+    },{
+        headers
+    })
+    .then((response)=> response)
+    .catch((error)=>error)
+}
+
+
+
+
+
+
+
+
 
 
     useEffect(() => {
@@ -82,7 +102,7 @@ const [cart, setCart] = useState(null)
 
 
 
-    return <CartContext.Provider value={{cart,setCart,getLoggedUserCart,addProductToCart,updateCartItem,deleteCartItem ,clearCart }}>
+    return <CartContext.Provider value={{checkOut,cart,setCart,getLoggedUserCart,addProductToCart,updateCartItem,deleteCartItem ,clearCart }}>
     
     {props.children}
     
